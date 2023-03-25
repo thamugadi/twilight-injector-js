@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+                <link rel="stylesheet" type="text/css" href="../style.css">
+        </head>
+        <script language="javascript" src="savefile.js" defer></script>
+        <body>
+        <div class="box">
+                <p> <h5>
+                        This is a small tool I made to load code using the <a href="https://wiibrew.org/wiki/Twilight_Hack#Explanation"> popular buffer overflow exploit present in the game.</a> It will not support long portions of code since it isn't loading any external file, but I still find it amusing :) <br> <br>
+                        Your code is going to be executed whenever Epona's name is loaded. <br>
+                        <br> NTSC-U and NTSC-J versions will be supported soon. </h5>
+        </div>
+        <div class="box">
+                <h3>Select your region</h3>
+
+                <select name="region" id="region" onclick="change_code();" onchange="change_code();">
+                        <option selected disabled hidden></option>
+                        <option value="PAL">PAL</option>
+                </select>
+                <h3>Your savefile (.gci)</h3><input type="file" id="save" />
+                <h3>Your code, as a raw binary file</h3>
+
+                <p> To link your code: <br>
+                        <code id="compile">
+                        </code>
+                </p>
+                <input type="file" id="code" />
+
+                <p><button id="Patch" onclick="patch_savefile();">Patch savefile</button></p>
+        </div>
+        <div class="box">
+                <h5>Here is an example of a small code I made to <a href="https://wetdry.world/@aramya/109956302186854761">make funny colors :)</a></h5>
+                <pre><code>
+void _start(void)
+{
+        unsigned int* tfbl;
+        unsigned int* fba; 
+        int i = 0;
+        while(1)
+        {
+                tfbl = (unsigned int*)0xCC00201C;
+                fba = 0x80000000 + ((*tfbl) & 0x00FFFE00);
+                fba[i] = fba[i+1]+2;
+                fba[i+1] = fba[i-1]+3;
+                fba[i-1] = fba[i]+4;
+                i+=3;
+                if (i > 0x20000) i = 1;
+        }
+}
+                </code></pre>
+        </div>
+        </body>
+</html>
