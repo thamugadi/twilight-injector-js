@@ -41,8 +41,9 @@ function patch_savefile()
                                 u8savedata[0x42F3] = 0xD2; u8savedata[0x42F4] = 0x7C;
                         }
                         else if (value == "NTSC-J")
-                        {       
-                                // to be done
+                        {        
+                                u8savedata[0x42F1] = 0x80; u8savedata[0x42F2] = 0x3E;
+                                u8savedata[0x42F3] = 0x53; u8savedata[0x42F4] = 0xB4;
                         }
                         for (let i = 0; i < u8codedata.length; i++)
                         {
@@ -136,6 +137,6 @@ function change_code()
         }
         else if (value == "NTSC-J")
         {
-                document.getElementById("compile").innerHTML="powerpc-eabi-ld --oformat binary -Ttext=ntscj {yourcode}.o -o {yourcode}"; 
+                document.getElementById("compile").innerHTML="powerpc-eabi-ld --oformat binary -Ttext=0x803E53B4 {yourcode}.o -o {yourcode}"; 
         }
 }
