@@ -132,7 +132,7 @@ function change_code()
         }
         else if (value == "NTSC-U")
         {
-                document.getElementById("compile").innerHTML="powerpc-eabi-ld --oformat binary -Ttext=ntscu {yourcode}.o -o {yourcode}"; 
+                document.getElementById("compile").innerHTML="powerpc-eabi-ld --oformat binary -Ttext=0x803ED27C {yourcode}.o -o {yourcode}"; 
         }
         else if (value == "NTSC-J")
         {
