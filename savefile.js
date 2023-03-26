@@ -37,7 +37,8 @@ function patch_savefile()
                         }
                         else if (value == "NTSC-U")
                         {
-                                // to be done
+                                u8savedata[0x42F1] = 0x80; u8savedata[0x42F2] = 0x3E;
+                                u8savedata[0x42F3] = 0xD2; u8savedata[0x42F4] = 0x7C;
                         }
                         else if (value == "NTSC-J")
                         {       
